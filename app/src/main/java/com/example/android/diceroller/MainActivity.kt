@@ -12,9 +12,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val button: Button = findViewById(R.id.button);
         button.setOnClickListener {
+            rollDice()
 
-            val resultTextView: TextView = findViewById(R.id.textView);
-            resultTextView.text = "6";
         }
     }
+
+    private fun rollDice() {
+        val dice = Dice(6);
+        val diceRoll = dice.roll()
+        val resultTextView: TextView = findViewById(R.id.textView);
+        resultTextView.text = diceRoll.toString();
+    }
+}
+
+class Dice(private val numSides: Int) {
+    fun roll() = (1..numSides).random();
 }
